@@ -65,6 +65,7 @@ footer {
 
 nav {
   display: flex;
+  align-items: center;
   gap: 20px;
   font-size: 14px;
 }
@@ -77,6 +78,40 @@ nav a {
 nav a:hover,
 .text-link:hover {
   color: var(--teal);
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.lang-switch button {
+  min-width: 42px;
+  padding: 5px 8px;
+  border: 0;
+  background: var(--paper);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.lang-switch button + button {
+  border-left: 1px solid var(--line);
+}
+
+.lang-switch button.active {
+  background: var(--teal);
+  color: #fff;
+}
+
+.lang-switch button:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: -2px;
 }
 
 .hero {
@@ -284,6 +319,8 @@ pre {
   border-radius: 5px;
   font-size: 13px;
   line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .text-link {
