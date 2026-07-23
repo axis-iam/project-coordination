@@ -7,6 +7,10 @@
 - Validation Evidence: UNVERIFIED
 - Priority: P0 | P1 | P2
 - Task Type: feature | hotfix | contract | migration | security | smoke | docs
+- Tracking Plan:
+- Project Default Profile: compact | standard | complex
+- Effective Task Profile: compact | standard | complex
+- Selection Reason / Escalation Trigger:
 
 ## Session Policy
 
@@ -61,6 +65,13 @@ Write `No external inputs required` when none are needed.
 - Expected signal:
 - Negative cases:
 
+## Quality Audit
+
+- Required: yes | no
+- Skill / profile:
+- Changed-since revision:
+- Finding disposition required in execution record: yes | no
+
 ## Acceptance Criteria
 
 ## Key Files
@@ -74,17 +85,10 @@ Write `No external inputs required` when none are needed.
 - Affected file count:
 - Scope explanation:
 
-## Execution Record
+## Execution Records
 
-### YYYY-MM-DD - <session or owner>
+Append entries using `assets/execution-record-template.md`. Do not rewrite an earlier session's record.
 
-- Execution session:
-- Implementation State:
-- Validation Evidence:
-- External completion claim: yes | no
-- Harness declared before edits: yes | no
-- Commands / flows:
-- Evidence:
-- Changed scope:
-- Remaining risks:
-- External blockers:
+## Acceptance Records
+
+The coordination session appends an entry using `assets/acceptance-record-template.md`. The execution session must not fill this section for its own work.

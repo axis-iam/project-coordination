@@ -1,6 +1,6 @@
 # Workflow Profiles
 
-Use the profile in `project-profile.md` as the default level of process. Escalate when the actual risk is higher; reduce process for clearly local low-risk work.
+Treat the profile in `docs/PROJECT_PROFILE.md` as a project default, not a permanent task classification. Before creating or dispatching a tracked task, select its effective profile using `references/task-profile-selection.md` and record the result in the task document. Escalate when the actual risk is higher; reduce a project default only for an explicitly local-only task.
 
 ## Compact
 
@@ -8,6 +8,8 @@ Use for a small project, a single repository, or a small backend and frontend pa
 
 - Make local changes directly when the owner, scope, and validation are obvious.
 - Create a task document only for cross-component work, a decision, a risky change, or explicit tracking.
+- Skip a separate plan unless the user needs a roadmap or the work grows into multiple tasks.
+- Run the `code-quality-audit` skill for risky changes or when explicitly requested.
 - Use one task branch or worktree for one writable repository.
 - A tracked or handed-off task uses a fresh execution session and returns to coordination for acceptance.
 - Keep the index concise; do not create empty plans or decision directories merely for taxonomy.
@@ -20,6 +22,8 @@ Use when backend and frontend are independently developed or when an API contrac
 - Identify the API contract owner before frontend or SDK implementation.
 - Use a separate worktree for each concurrently modified Git root.
 - Record focused build and behavior evidence in the execution record.
+- Create a plan when multiple tasks or components need sequencing.
+- Run a changed-file quality audit for public contracts, security boundaries, or cross-component work.
 - The coordination session dispatches a fresh execution session, then independently accepts its result.
 
 ## Complex
@@ -27,8 +31,12 @@ Use when backend and frontend are independently developed or when an API contrac
 Use when several repositories, SDKs, teams, sessions, external gates, migrations, or release checks are involved.
 
 - Build a dependency graph before dispatching parallel work.
+- Create and maintain a plan for multi-stage work before dispatching its executable tasks.
 - Require per-repository worktree policies and execution records.
 - Distinguish raw API, SDK, browser, and operational validation lanes.
 - Audit accepted decisions for unfinished implementation stages before status or release conclusions.
 - Treat credentials, third-party setup, DNS/TLS, callback URLs, and manual approvals as explicit external gates.
 - Use one or more fresh execution sessions for implementation; keep the coordinator separate for dispatch and acceptance.
+- Run changed-file quality audits by default. Use a full baseline only for a dedicated hardening workstream.
+
+The required-artifact matrix, conservative-baseline rule, and typical decisions are defined in `references/task-profile-selection.md`. Do not rely on repository size alone when choosing task process.

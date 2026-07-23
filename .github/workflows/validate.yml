@@ -9,8 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
       - name: Validate source
         run: bash scripts/validate-source.sh
+      - name: Test code-quality scanner
+        run: python -m unittest discover -s skill/code-quality-audit/tests -p "test_*.py" -v
       - name: Run install/update integration test
         run: bash tests/install-update.sh
 
@@ -18,6 +23,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
       - name: Install PowerShell smoke project
         shell: pwsh
         run: |
@@ -27,6 +35,22 @@ jobs:
           Set-Content -Path (Join-Path $target 'AGENTS.md') -Value 'existing instructions'
           & .\scripts\install.ps1 -TargetPath $target -Architecture monorepo -Workflow compact
           if (-not (Test-Path (Join-Path $target 'docs/PROJECT_TASKS.md'))) { throw 'Task index was not created.' }
-          $profile = Get-Content (Join-Path $target '.agents/skills/project-coordination/references/project-profile.md')
+          foreach ($platform in @('.agents', '.claude')) {
+            foreach ($skill in @('project-coordination', 'workstream-triage', 'validation-harness', 'api-contract-sync', 'code-quality-audit')) {
+              if (-not (Test-Path (Join-Path $target "$platform/skills/$skill/SKILL.md"))) {
+                throw "Missing $platform skill: $skill"
+              }
+            }
+          }
+          if (-not (Test-Path (Join-Path $target 'CLAUDE.md'))) { throw 'Claude instructions were not created.' }
+          $profile = Get-Content (Join-Path $target 'docs/PROJECT_PROFILE.md')
           if (-not ($profile -contains '- `.`')) { throw 'Root Git repository was not detected.' }
+          $obsoleteCodex = Join-Path $target '.agents/skills/project-coordination/references/obsolete-managed-file.md'
+          $obsoleteClaude = Join-Path $target '.claude/skills/api-contract-sync/references/obsolete-managed-file.md'
+          Set-Content -Path $obsoleteCodex -Value 'obsolete managed file'
+          Set-Content -Path $obsoleteClaude -Value 'obsolete managed file'
           & .\scripts\install.ps1 -TargetPath $target -Update
+          if (Test-Path $obsoleteCodex) { throw 'PowerShell update retained an obsolete Codex skill file.' }
+          if (Test-Path $obsoleteClaude) { throw 'PowerShell update retained an obsolete Claude skill file.' }
+      - name: Test code-quality scanner
+        run: python -m unittest discover -s skill/code-quality-audit/tests -p "test_*.py" -v

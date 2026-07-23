@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A repository-local Codex skill for coordinating delivery across components and sessions."
+      content="Repository-local Codex and Claude Code skills for workstream triage, delivery coordination, validation, contract sync, and code-quality review."
     />
     <meta name="theme-color" content="#0a7667" />
     <title>项目协调 | axis-iam</title>
@@ -21,6 +21,7 @@
       <nav aria-label="主导航" data-i18n-attr="aria-label:navAria">
         <a href="#lifecycle" data-i18n="navLifecycle">生命周期</a>
         <a href="#profiles" data-i18n="navProfiles">流程档位</a>
+        <a href="#skills" data-i18n="navSkills">Skill 组成</a>
         <a href="#install" data-i18n="navInstall">安装</a>
         <a href="https://github.com/axis-iam/project-coordination" data-i18n="navGithub">GitHub</a>
         <div class="lang-switch" role="group" aria-label="语言" data-i18n-attr="aria-label:languageGroup">
@@ -33,11 +34,11 @@
     <main id="top">
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="heroEyebrow">仓库级 Codex skill</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Codex + Claude Code 仓库级 Skills</p>
           <h1 id="page-title" data-i18n="pageTitle">项目协调</h1>
-          <p class="lede" data-i18n="heroLede">把项目决策、任务、代码状态和验证证据，整理成下一项可验证的工作。</p>
+          <p class="lede" data-i18n="heroLede">把项目决策、计划、任务、代码质量和验证证据，整理成下一项可验收的工作。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#install" data-i18n="heroInstall">使用 Codex 安装</a>
+            <a class="button primary" href="#install" data-i18n="heroInstall">安装到项目</a>
             <a class="button secondary" href="https://github.com/axis-iam/project-coordination" data-i18n="heroSource">查看源码</a>
           </div>
         </div>
@@ -46,6 +47,35 @@
           <strong data-i18n="signalTitle" data-i18n-mode="html">先定范围，再写代码。<br />先有证据，再做验收。</strong>
           <p data-i18n="signalBody">从真实的多仓库交付流程中提炼，不绑定具体产品或技术栈。</p>
         </aside>
+      </section>
+
+      <section class="band split" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="skillsEyebrow">五个职责清晰的 Skill</p>
+          <h2 id="skills-title" data-i18n="skillsTitle">从当前工作线，一直到可验证的交付证据。</h2>
+        </div>
+        <div class="skill-list">
+          <div>
+            <h3>Workstream Triage</h3>
+            <p data-i18n="triageBody">用决策、计划、任务索引和仓库证据确认主工作线，区分阻塞项、未来工作与待决策事项。</p>
+          </div>
+          <div>
+            <h3>Project Coordination</h3>
+            <p data-i18n="coordinationBody">把已确认方向转成计划与可执行任务，交给新 session 实现，再回到协调 session 独立验收。</p>
+          </div>
+          <div>
+            <h3>Validation Harness</h3>
+            <p data-i18n="validationBody">修改前定义最小可复现验证，区分工具、运行时与端到端证据，并按 lane 组织 live smoke。</p>
+          </div>
+          <div>
+            <h3>API Contract Sync</h3>
+            <p data-i18n="contractBody">确认权威契约来源，同步后端、前端、Mock、生成客户端、文档和 SDK 的结构与行为。</p>
+          </div>
+          <div>
+            <h3>Code Quality Audit</h3>
+            <p data-i18n="auditBody">聚焦 changed files，找出过度兜底、异常掩盖、宽松类型和不必要状态同步等审查候选。</p>
+          </div>
+        </div>
       </section>
 
       <section class="band" id="lifecycle" aria-labelledby="lifecycle-title">
@@ -76,6 +106,7 @@
         <div class="section-heading">
           <p class="eyebrow" data-i18n="profilesEyebrow">按规模启用流程</p>
           <h2 id="profiles-title" data-i18n="profilesTitle">只使用工作真正需要的流程。</h2>
+          <p class="section-note" data-i18n="profilesNote">安装时选择项目默认档位；每个 tracked task 根据实际风险记录有效档位，可升级也可降级。</p>
         </div>
         <div class="profile-list">
           <div>
@@ -93,14 +124,35 @@
         </div>
       </section>
 
+      <section class="band" id="quality" aria-labelledby="quality-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="qualityEyebrow">随协调包安装</p>
+          <h2 id="quality-title" data-i18n="qualityTitle">审查可疑模式，不用扫描结果代替判断。</h2>
+        </div>
+        <div class="profile-list">
+          <div>
+            <h3 data-i18n="qualityChangedTitle">聚焦变更</h3>
+            <p data-i18n="qualityChangedBody">按真实 Git 根检查 changed files，支持 Java、Kotlin、TypeScript、JavaScript、Go 和 Python。</p>
+          </div>
+          <div>
+            <h3 data-i18n="qualityClassifyTitle">人工分类</h3>
+            <p data-i18n="qualityClassifyBody">识别过度兜底、异常吞噬、空结果掩盖、any、浏览器 token 存储和 React 状态同步候选。</p>
+          </div>
+          <div>
+            <h3 data-i18n="qualityEvidenceTitle">证据分离</h3>
+            <p data-i18n="qualityEvidenceBody">扫描结果只是 review 输入；编译、测试、运行时和 E2E 证据仍由执行与验收记录负责。</p>
+          </div>
+        </div>
+      </section>
+
       <section class="band install" id="install" aria-labelledby="install-title">
         <div class="section-heading">
           <p class="eyebrow" data-i18n="installEyebrow">在项目上下文中开始</p>
-          <h2 id="install-title" data-i18n="installTitle">让 Codex 将它安装到项目中。</h2>
+          <h2 id="install-title" data-i18n="installTitle">让 Codex 或 Claude Code 将它安装到项目中。</h2>
         </div>
         <div class="install-grid">
           <p data-i18n="installBody">
-            安装器只询问项目架构和流程档位。它会发现 Git 根与组件清单，保留已有指令和任务索引，并将项目专属能力 skill 留在协调包之外。
+            安装器只询问项目架构和流程档位。它会发现 Git 根与组件清单，保留已有指令和任务索引，并将五个 skill 同时安装到两个平台目录。
           </p>
           <pre><code data-i18n="installCode" data-i18n-mode="text">从本仓库将 project-coordination 安装到：
 
@@ -109,9 +161,9 @@
 Architecture: multi-repo
 Workflow profile: standard
 
-先阅读 README.md 和安装器。保留已有 AGENTS.md 与 docs/PROJECT_TASKS.md。不要修改业务代码或创建 commit。</code></pre>
+先阅读 README.md 和安装器。保留已有 AGENTS.md、CLAUDE.md 与 docs/PROJECT_TASKS.md。不要修改业务代码或创建 commit。</code></pre>
         </div>
-        <a class="text-link" href="https://github.com/axis-iam/project-coordination#install-with-codex" data-i18n="installLink">查看完整安装 prompt</a>
+        <a class="text-link" href="https://github.com/axis-iam/project-coordination#install-with-an-agent" data-i18n="installLink">查看完整安装 prompt</a>
       </section>
 
       <section class="band boundary" aria-labelledby="boundary-title">
@@ -120,7 +172,7 @@ Workflow profile: standard
           <h2 id="boundary-title" data-i18n="boundaryTitle">协调内核，而不是产品模板。</h2>
         </div>
         <p data-i18n="boundaryBody">
-          产品边界、运行启动器、服务拓扑、领域接入、API 约定和项目编码规则都保留在目标仓库中。这个 skill 负责协调这些能力，不替代它们。
+          产品边界、运行启动器、服务拓扑、领域接入、API 约定和项目编码规则都保留在目标仓库中。这组 skill 负责协调这些能力，不替代它们。
         </p>
       </section>
     </main>

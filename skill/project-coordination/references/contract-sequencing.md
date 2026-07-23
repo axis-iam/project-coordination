@@ -2,6 +2,8 @@
 
 Use this reference when a change affects a public API, event, schema, browser client, SDK, or another consumer-facing boundary.
 
+Use the installed `api-contract-sync` skill for the actual cross-surface inventory, edits, and parity validation. This reference controls ownership and dispatch sequencing.
+
 1. Locate the contract owner from local `AGENTS.md`, decision documents, and existing API sources. Do not infer ownership from directory names alone.
 2. Record the desired request, response, error, nullable, enum, date, pagination, authorization, and compatibility behavior in the owning task or contract document.
 3. Implement or verify the provider-side contract first when the contract is new or unresolved.

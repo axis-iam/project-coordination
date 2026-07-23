@@ -11,9 +11,15 @@
 
 ## Context
 
+## Decision Drivers
+
 ## Decision
 
+## Alternatives Considered
+
 ## Consequences
+
+## Rollout And Rollback
 
 ## Required Follow-Ups
 

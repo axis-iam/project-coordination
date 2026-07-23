@@ -1,0 +1,6 @@
+interface:
+  display_name: "Validation Harness"
+  short_description: "Define reproducible evidence before implementation"
+  default_prompt: "Use $validation-harness to define the narrowest reproducible verification surface and record implementation state plus validation evidence."
+policy:
+  allow_implicit_invocation: true

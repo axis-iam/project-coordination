@@ -1,6 +1,6 @@
 interface:
   display_name: "Project Coordination"
-  short_description: "Coordinate multi-component delivery work"
-  default_prompt: "Use $project-coordination to triage, dispatch, or accept this project work."
+  short_description: "Plan and coordinate multi-component delivery"
+  default_prompt: "Use $project-coordination to plan, dispatch, or accept this project work."
 policy:
   allow_implicit_invocation: true

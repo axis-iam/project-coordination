@@ -1,6 +1,6 @@
 # Session Lifecycle
 
-Use three roles for every tracked `standard` or `complex` task:
+Use three roles for every tracked or handed-off task. An untracked `compact` local-only task may implement and verify in one session.
 
 | Stage | Owner | Required output | Exit gate |
 | --- | --- | --- | --- |
@@ -16,4 +16,4 @@ The acceptance step returns to a coordination session after implementation. Do n
 
 Do not claim that an external session has been created merely by writing a handoff prompt. The coordinator produces the prompt; the user or execution environment starts the fresh session.
 
-For a `compact` local low-risk change, one session may implement and verify directly. Once the change becomes tracked, cross-component, security-sensitive, externally gated, or handed off, move to this lifecycle rather than continuing in the same implementation context.
+For a `compact` local-only change, one session may implement and verify directly. Once the change becomes tracked, cross-component, security-sensitive, externally gated, or handed off, reselect the effective task profile and move to this lifecycle rather than continuing in the same implementation context.

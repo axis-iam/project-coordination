@@ -9,6 +9,9 @@
 - Commands / flows:
 - Evidence:
 - Changed scope:
+- Quality audit: NOT_REQUIRED | NOT_RUN | NO_FINDINGS | REVIEWED | BLOCKED
+- Quality audit command / profile:
+- Quality findings classification:
 - Formatter / generator record:
 - Remaining risks:
 - External blockers:

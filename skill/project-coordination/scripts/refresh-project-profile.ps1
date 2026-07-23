@@ -7,8 +7,9 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $targetProject = (Resolve-Path $TargetPath).Path
-$skillDirectory = Split-Path -Parent $PSScriptRoot
-$profile = Join-Path $skillDirectory 'references/project-profile.md'
+$docsDirectory = Join-Path $targetProject 'docs'
+New-Item -ItemType Directory -Force -Path $docsDirectory | Out-Null
+$profile = Join-Path $docsDirectory 'PROJECT_PROFILE.md'
 
 if ((-not $Architecture -or -not $Workflow) -and (Test-Path $profile)) {
     $existingContent = Get-Content $profile
@@ -61,7 +62,7 @@ $profileLines = @(
     "- Architecture: $Architecture",
     "- Workflow profile: $Workflow",
     '',
-    'Commands, ownership, and product constraints are discovered from local `AGENTS.md`, manifests, and project docs when a task needs them. Do not maintain duplicate command lists here.',
+    'Commands, ownership, and product constraints are discovered from local `AGENTS.md` or `CLAUDE.md`, manifests, and project docs when a task needs them. Do not maintain duplicate command lists here.',
     '',
     '## Detected Git Roots',
     ''

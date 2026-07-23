@@ -40,8 +40,8 @@ case "$workflow" in
 esac
 
 target="$(cd "$target" && pwd)"
-skill_dir="$(cd "$(dirname "$0")/.." && pwd)"
-profile="$skill_dir/references/project-profile.md"
+profile="$target/docs/PROJECT_PROFILE.md"
+mkdir -p "$target/docs"
 
 if [ -z "$architecture" ] && [ -f "$profile" ]; then
   architecture="$(sed -n 's/^- Architecture: //p' "$profile" | head -n 1)"
@@ -75,7 +75,7 @@ manifest_rows="$({
   printf '%s\n' "- Project name: $(basename "$target")"
   printf '%s\n' "- Architecture: ${architecture:-detected-later}"
   printf '%s\n\n' "- Workflow profile: ${workflow:-detected-later}"
-  printf '%s\n\n' 'Commands, ownership, and product constraints are discovered from local `AGENTS.md`, manifests, and project docs when a task needs them. Do not maintain duplicate command lists here.'
+  printf '%s\n\n' 'Commands, ownership, and product constraints are discovered from local `AGENTS.md` or `CLAUDE.md`, manifests, and project docs when a task needs them. Do not maintain duplicate command lists here.'
   printf '%s\n\n' '## Detected Git Roots'
   if [ -n "$git_roots" ]; then
     while IFS= read -r root; do

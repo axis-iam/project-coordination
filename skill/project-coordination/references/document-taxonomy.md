@@ -8,7 +8,7 @@ Create these directories only when their document type is needed:
 | --- | --- |
 | `docs/tasks/` | Executable work with scope, dependencies, validation, and an execution record |
 | `docs/decisions/` | Accepted or proposed durable product and architecture decisions |
-| `docs/plans/` | Direction, sequencing, and multi-stage planning that is not yet executable work |
+| `docs/plans/` | Direction, sequencing, and multi-stage planning; create with `assets/plan-template.md` |
 | `docs/guides/` | Reusable development, integration, operation, or troubleshooting guidance |
 
 Do not create new `docs/prompts/` files. Generate handoff prompts from the canonical task document in the current conversation. Treat an existing `docs/prompts/` directory as historical archive only.
@@ -16,3 +16,5 @@ Do not create new `docs/prompts/` files. Generate handoff prompts from the canon
 Use `docs/fixtures/` only for reusable protocol examples or validation inputs when the project has a real need. It is not a workflow document category.
 
 Create a component-level `docs/PROJECT_TASKS.md` lazily when an independent Git repository owns executable tasks. Keep the root index as the cross-component entry point and link to the owning component record instead of duplicating its body.
+
+Use `assets/decision-template.md` for durable decisions, `assets/task-template.md` for executable work, `assets/execution-record-template.md` for implementation evidence, and `assets/acceptance-record-template.md` for independent acceptance. Do not add generic contract or guide templates: their useful structure depends on the target project's stack and audience.
