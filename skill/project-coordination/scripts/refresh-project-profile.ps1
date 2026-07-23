@@ -35,7 +35,13 @@ if (Test-Path (Join-Path $targetProject '.git')) { $gitRoots += '.' }
 $gitRoots += Get-ChildItem -Path $targetProject -Recurse -Force -Filter '.git' -ErrorAction SilentlyContinue |
     Where-Object { $_.FullName -notmatch '[\\/](node_modules|vendor|\.pnpm-store)[\\/]' } |
     ForEach-Object {
-        $relativeParent = [System.IO.Path]::GetRelativePath($targetProject, $_.Directory.FullName)
+        $markerParent = Split-Path -Parent $_.FullName
+        if ([string]::IsNullOrWhiteSpace($markerParent)) { return }
+        try {
+            $relativeParent = [System.IO.Path]::GetRelativePath($targetProject, $markerParent)
+        } catch {
+            return
+        }
         if ($relativeParent -ne '.') { $relativeParent }
     }
 $gitRoots = @($gitRoots | Sort-Object -Unique)
