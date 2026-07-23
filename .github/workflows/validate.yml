@@ -1,0 +1,30 @@
+name: Validate project-coordination
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  bash:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate source
+        run: bash scripts/validate-source.sh
+      - name: Run install/update integration test
+        run: bash tests/install-update.sh
+
+  powershell:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PowerShell smoke project
+        shell: pwsh
+        run: |
+          $target = Join-Path $env:RUNNER_TEMP 'project-coordination-target'
+          New-Item -ItemType Directory -Force -Path $target | Out-Null
+          git -C $target init -q
+          Set-Content -Path (Join-Path $target 'AGENTS.md') -Value 'existing instructions'
+          & .\scripts\install.ps1 -TargetPath $target -Architecture monorepo -Workflow compact
+          if (-not (Test-Path (Join-Path $target 'docs/PROJECT_TASKS.md'))) { throw 'Task index was not created.' }
+          & .\scripts\install.ps1 -TargetPath $target -Update

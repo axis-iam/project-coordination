@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A repository-local Codex skill for coordinating delivery across components and sessions."
+    />
+    <meta name="theme-color" content="#0a7667" />
+    <title>Project Coordination | axis-iam</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Project Coordination home">
+        <img src="https://github.com/axis-iam.png?size=96" alt="axis-iam" />
+        <span>axis-iam</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#lifecycle">Lifecycle</a>
+        <a href="#profiles">Profiles</a>
+        <a href="#install">Install</a>
+        <a href="https://github.com/axis-iam/project-coordination">GitHub</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Repository-local Codex skill</p>
+          <h1 id="page-title">Project Coordination</h1>
+          <p class="lede">
+            Turn a project&rsquo;s decisions, tasks, code state, and validation evidence into the next verified piece of work.
+          </p>
+          <p class="lede zh" lang="zh-CN">
+            面向多组件项目的交付协调 skill：明确依赖、派发任务、隔离执行上下文，并以独立验收结束每一轮工作。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#install">Install with Codex</a>
+            <a class="button secondary" href="https://github.com/axis-iam/project-coordination">View source</a>
+          </div>
+        </div>
+        <aside class="hero-signal" aria-label="Coordination contract">
+          <span>COORDINATION CONTRACT</span>
+          <strong>Scope before code.<br />Evidence before acceptance.</strong>
+          <p>Designed from real multi-repository delivery work, without tying the workflow to a specific product or stack.</p>
+        </aside>
+      </section>
+
+      <section class="band" id="lifecycle" aria-labelledby="lifecycle-title">
+        <div class="section-heading">
+          <p class="eyebrow">The central rule</p>
+          <h2 id="lifecycle-title">Separate coordination, execution, and acceptance.</h2>
+        </div>
+        <div class="lifecycle" role="list">
+          <article role="listitem">
+            <span class="step">01</span>
+            <h3>Coordinate</h3>
+            <p>Create the canonical task, resolve dependencies, assign worktrees, declare the validation harness, and produce a handoff prompt.</p>
+          </article>
+          <article role="listitem">
+            <span class="step">02</span>
+            <h3>Execute in a fresh session</h3>
+            <p>Implement only the declared scope, run the harness, and append an execution record. Do not silently expand work or self-accept.</p>
+          </article>
+          <article role="listitem">
+            <span class="step">03</span>
+            <h3>Accept independently</h3>
+            <p>Return to coordination to check diff, evidence, dependencies, and consumer contracts before recording acceptance.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band split" id="profiles" aria-labelledby="profiles-title">
+        <div class="section-heading">
+          <p class="eyebrow">Scale the process</p>
+          <h2 id="profiles-title">Use only the amount of process the work needs.</h2>
+        </div>
+        <div class="profile-list">
+          <div>
+            <h3>Compact</h3>
+            <p>Local, low-risk changes can stay in one session with a focused validation command.</p>
+          </div>
+          <div>
+            <h3>Standard</h3>
+            <p>Backend and frontend work uses task records, contract ownership, a fresh execution session, and coordinator acceptance.</p>
+          </div>
+          <div>
+            <h3>Complex</h3>
+            <p>Multiple repositories, SDKs, parallel work, migrations, and external gates receive explicit dependency and release controls.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="band install" id="install" aria-labelledby="install-title">
+        <div class="section-heading">
+          <p class="eyebrow">Start in context</p>
+          <h2 id="install-title">Ask Codex to install it into a project.</h2>
+        </div>
+        <div class="install-grid">
+          <p>
+            The installer only asks for architecture and workflow profile. It discovers Git roots and component manifests, preserves existing instructions and task indexes, and keeps project-specific capability skills outside the coordination package.
+          </p>
+          <pre><code>Install project-coordination from this repository into:
+
+&lt;absolute-target-project-path&gt;
+
+Architecture: multi-repo
+Workflow profile: standard
+
+Read README.md and the installer first. Preserve existing AGENTS.md and docs/PROJECT_TASKS.md. Do not modify business code or create a commit.</code></pre>
+        </div>
+        <a class="text-link" href="https://github.com/axis-iam/project-coordination#install-with-codex">Read the complete installation prompt</a>
+      </section>
+
+      <section class="band boundary" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <p class="eyebrow">What stays local</p>
+          <h2 id="boundary-title">A coordination kernel, not a product template.</h2>
+        </div>
+        <p>
+          Product boundaries, runtime launchers, service topology, domain onboarding, API conventions, and project-specific coding rules remain in the target repository. This skill coordinates those capabilities; it does not replace them.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <span>axis-iam / project-coordination</span>
+      <a href="https://github.com/axis-iam/project-coordination">GitHub repository</a>
+    </footer>
+  </body>
+</html>
