@@ -28,5 +28,5 @@ jobs:
           & .\scripts\install.ps1 -TargetPath $target -Architecture monorepo -Workflow compact
           if (-not (Test-Path (Join-Path $target 'docs/PROJECT_TASKS.md'))) { throw 'Task index was not created.' }
           $profile = Get-Content (Join-Path $target '.agents/skills/project-coordination/references/project-profile.md')
-          if (-not ($profile -contains '- ``.``')) { throw 'Root Git repository was not detected.' }
+          if (-not ($profile -contains '- `.`')) { throw 'Root Git repository was not detected.' }
           & .\scripts\install.ps1 -TargetPath $target -Update
